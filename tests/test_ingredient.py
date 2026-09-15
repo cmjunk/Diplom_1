@@ -4,10 +4,10 @@ from praktikum.ingredient import Ingredient
 from praktikum.ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FILLING
 
 INGREDIENT_CASES = [
-    (INGREDIENT_TYPE_SAUCE, 'hot sauce', 20.0), 
-    (INGREDIENT_TYPE_SAUCE, 'mayo', 15.0), 
-    (INGREDIENT_TYPE_FILLING, 'crabby patty', 100.0),
-    (INGREDIENT_TYPE_FILLING, 'lettuce', 10.0)
+    (INGREDIENT_TYPE_SAUCE, 'hot sauce', 100.0),
+    (INGREDIENT_TYPE_SAUCE, 'sour cream', 200.0),
+    (INGREDIENT_TYPE_FILLING, 'cutlet', 100.0),
+    (INGREDIENT_TYPE_FILLING, 'dinosaur', 200.0),
 ]
 
 class TestIngredient:
