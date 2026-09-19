@@ -33,10 +33,9 @@ class TestAvailableBuns:
         (2, 'red bun', 300),
     ])
     def test_bun_contents(self, database, index, expected_name, expected_price):
-        buns = database.available_buns()
+        buns = database.available_buns()[index]
 
-        assert buns[index].get_name() == expected_name
-        assert buns[index].get_price() == expected_price
+        assert (buns.get_name(), buns.get_price()) == (expected_name, expected_price)
 
     def test_returns_same_list_reference(self, database):
         buns_first_call = database.available_buns()
@@ -70,11 +69,13 @@ class TestAvailableIngredients:
         (5, INGREDIENT_TYPE_FILLING, 'sausage', 300),
     ])
     def test_ingredient_contents(self, database, index, expected_type, expected_name, expected_price):
-        ingredients = database.available_ingredients()
+        ingredients = database.available_ingredients()[index]
 
-        assert ingredients[index].get_type() == expected_type
-        assert ingredients[index].get_name() == expected_name
-        assert ingredients[index].get_price() == expected_price
+        assert (ingredients.get_type(), ingredients.get_name(), ingredients.get_price()) == (
+        expected_type,
+        expected_name,
+        expected_price,
+    )
 
     def test_returns_same_list_reference(self, database):
         ingredients_first_call = database.available_ingredients()

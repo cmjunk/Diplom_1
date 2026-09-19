@@ -18,7 +18,6 @@ class TestSetBuns:
         burger.set_buns(new_bun)
 
         assert burger.bun is new_bun
-        assert burger.bun is not old_bun
 
 
 class TestAddIngredient:
@@ -64,8 +63,10 @@ class TestRemoveIngredient:
     def test_remove_ingredient_invalid_index_raises(self, burger, mock_ingredient):
         burger.add_ingredient(mock_ingredient)
 
-        with pytest.raises(IndexError):
+        with pytest.raises(IndexError) as exc_info:
             burger.remove_ingredient(5)
+
+        assert 'list assignment index out of range' in str(exc_info.value)
 
 
 class TestMoveIngredient:
@@ -118,8 +119,10 @@ class TestGetPrice:
         assert burger.get_price() == expected_total
 
     def test_get_price_without_bun_raises(self, burger):
-        with pytest.raises(AttributeError):
+        with pytest.raises(AttributeError) as exc_info:
             burger.get_price()    
+
+        assert "'NoneType' object has no attribute 'get_price'" in str(exc_info.value)    
 
 class TestGetReceipt:
     def test_get_receipt_bun_only(self, burger, mock_bun):
